@@ -1,0 +1,13 @@
+//  Link Base Resets
+//  ==============================
+//
+// Addresses outline displayed oddly in Chrome
+
+a {
+  &:focus {
+    outline: thin dotted;
+  }
+  &:hover, &:active {
+    outline: 0;
+  }
+}

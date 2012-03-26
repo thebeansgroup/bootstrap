@@ -1,0 +1,416 @@
+/* 
+ * Layout.scss
+ * Responsive layout rules. */
+
+
+// Imports
+// =======
+@import "compass/css3";
+
+
+
+// Container
+// ========
+// 
+//    .l-container
+//      %p Some example text 
+//    %section.l-container
+//      %p Some example text 
+// 
+// 
+//
+
+.l-container {
+  margin:0 auto;
+  max-width:$max-width;
+  min-width:$min-width;
+}
+
+@media (min-width:769px) {
+
+  .l-container {
+    width:99%;
+    max-width:961px;
+  }
+
+}
+
+// Fields
+// ========
+//
+//    .l-container
+//      %section{:class => "l-fields"} 
+//        %p Some example text 
+//
+// The fields class defines horizontal divisions of the page.
+
+$feilds-border-width: 2px;
+
+.l-fields {
+  clear:both
+}
+
+.ie7 .l-fields {
+  zoom:1
+}
+
+.l-fields:before,
+.l-fields:after {
+  display:table;
+  content:''
+}
+
+.l-fields:after {
+  clear:both
+}
+
+
+
+// Fields border
+// ========
+//
+//    .l-container
+//      %section{:class => "l-fields border_top"} 
+//        %p Some example text 
+//
+//    .l-container
+//      %section{:class => "l-fields border_bottom"} 
+//        %p Some example text 
+//
+// The fields border class adds a border (dividing rule) bewteen fields.
+
+.l-fields.border_top {
+  padding-top: $base-line-height  - $feilds-border-width;
+  border-top: $feilds-border-width solid #333;
+}
+.l-fields.border_bottom {
+  margin-bottom: $base-line-height - $feilds-border-width;
+  border-bottom: $feilds-border-width solid #333;
+}
+
+
+
+// Region
+// ========
+//
+//    .l-container
+//      %section{:class => "l-fields border_bottom"} 
+//        %article.l-region
+//          %p Some example text 
+//
+//
+// The region class creates veritcal divisions of the page with defined
+// sizes for containing content. (They can be thought of as “columns”)
+
+.l-region {
+  @include box-sizing(border-box);
+}
+
+@media (min-width:769px) {
+
+  .l-region-centered {
+    float:none;
+    margin:0 auto;
+  }
+
+  .l-region {
+    position:relative;
+    float:left;
+    padding:0 8px;
+  }
+
+  .l-region.reset,
+  .l-region.reset-left {
+    padding-left:0;
+  }
+
+  .l-region.reset,
+  .l-region.reset-right {
+    padding-right:0;
+  }
+
+  .ie7 .l-region-last {
+    /* class add via JS */
+    zoom:1;
+    float:none;
+    width:auto
+  }
+
+}
+
+
+
+// Region sizes
+// ========
+//
+//        %article.l-region.l-1of2
+//          %p Some example text 
+//        %article.l-region.l-1of2
+//          %p Some example text 
+//
+//
+// Region sizing classes defines the size of a region from within the
+// markup. 
+
+@media (min-width:769px) {
+  .l-1of1 {float:none}
+  .l-1of2 {width:50%}
+  .l-1of3 {width:33.333333%}
+  .l-2of3 {width:66.666666%}
+  .l-1of4 {width:25%}
+  .l-3of4 {width:75%}
+  .l-1of5 {width:20%}
+  .l-2of5 {width:40%}
+  .l-3of5 {width:60%}
+  .l-4of5 {width:80%}
+  .l-1of6 {width:16.666667%}
+  .l-5of6 {width:83.333333%}
+  .l-1of7 {width:14.285714%}
+  .l-golden-long {width:61.803398%}
+  .l-golden-short {width:38.196602%}
+}
+
+
+
+// Region prefix and sufix
+// ========
+//
+//        %article.l-region.l-1of5
+//          %p Some example text 
+//        %article.l-region.l-3of5.prefix1of5
+//          %p Some example text 
+//
+//
+// Regions can be offet using this technique. This allows for
+// additional space between regions.
+
+@media (min-width:769px) {
+
+  .prefix1of2 {margin-left:50%}
+  .prefix1of3 {margin-left:33.333333%}
+  .prefix2of3 {margin-left:66.666666%}
+  .prefix1of4 {margin-left:25%}
+  .prefix3of4 {margin-left:75%}
+  .prefix1of5 {margin-left:20%}
+  .prefix2of5 {margin-left:40%}
+  .prefix3of5 {margin-left:60%}
+  .prefix4of5 {margin-left:80%}
+  .prefix1of6 {margin-left:16.666667%}
+  .prefix5of6 {margin-left:83.333333%}
+  .prefix1of7 {margin-left:14.285714%}
+  .prefix-golden-long {margin-left:61.803398%}
+  .prefix-golden-short {margin-left:38.196602%}
+
+  .suffix1of2 {margin-right:50%}
+  .suffix1of3 {margin-right:33.333333%}
+  .suffix2of3 {margin-right:66.666666%}
+  .suffix1of4 {margin-right:25%}
+  .suffix3of4 {margin-right:75%}
+  .suffix1of5 {margin-right:20%}
+  .suffix2of5 {margin-right:40%}
+  .suffix3of5 {margin-right:60%}
+  .suffix4of5 {margin-right:80%}
+  .suffix1of6 {margin-right:16.666667%}
+  .suffix5of6 {margin-right:83.333333%}
+  .suffix1of7 {margin-right:14.285714%}
+  .suffix-golden-long {margin-right:61.803398%}
+  .suffix-golden-short {margin-right:38.196602%}
+
+}
+
+
+
+
+// Region push and pull
+// ========
+//
+//        %article.l-region.l-1of3.push1of3
+//          %p Some example text 1
+//        %article.l-region.l-2of3.pull2of3
+//          %p Some example text 2
+//
+//
+// The visual order of the regions can be different from the
+// source order using this technique
+
+@media (min-width:769px) {
+
+  .push1of2 {left:50%}
+  .push1of3 {left:33.333333%}
+  .push2of3 {left:66.666666%}
+  .push1of4 {left:25%}
+  .push3of4 {left:75%}
+  .push1of5 {left:20%}
+  .push2of5 {left:40%}
+  .push3of5 {left:60%}
+  .push4of5 {left:80%}
+  .push1of6 {left:16.666667%}
+  .push5of6 {left:83.333333%}
+  .push1of7 {left:14.285714%}
+  .push-golden-long {left:61.803398%}
+  .push-golden-short {left:38.196602%}
+
+  .pull1of2 {left:-50%}
+  .pull1of3 {left:-33.333333%}
+  .pull2of3 {left:-66.666666%}
+  .pull1of4 {left:-25%}
+  .pull3of4 {left:-75%}
+  .pull1of5 {left:-20%}
+  .pull2of5 {left:-40%}
+  .pull3of5 {left:-60%}
+  .pull4of5 {left:-80%}
+  .pull1of6 {left:-16.666667%}
+  .pull5of6 {left:-83.333333%}
+  .pull1of7 {left:-14.285714%}
+  .pull-golden-long {left:-61.803398%}
+  .pull-golden-short {left:-38.196602%}
+
+}
+
+
+
+// Region media
+// ========
+//
+// Responsive media helper classes
+.l-region embed,
+.l-region img,
+.l-region object,
+.l-region video {
+  max-width:100%;
+}
+
+.l-region img,
+.l-region video {
+  height:auto
+}
+
+.ie7 .l-region img {
+  -ms-interpolation-mode:bicubic
+}
+
+
+// Blocks
+// ========
+//
+//    .l-container
+//     %section.l-fields
+//       %ol{:class => "blocks blocks-four-up"}
+//          - (1...8).each do |i|
+//            %li Hello
+//
+// Blocks contain lists of repeating content.
+.l-blocks {
+  display:block;
+  clear:both;
+  // margin-left:-16px;
+  list-style:none
+}
+.l-blocks:after {
+  display:block;
+  clear:both;
+  content:''
+}
+.no-generatedcontent .l-blocks {
+  overflow:hidden
+}
+
+.l-blocks > li {
+  display:block;
+  @include box-sizing(border-box);
+  clear:both;
+  padding:0 0 0 16px;
+  background:none
+}
+
+@media (min-width:320px) {
+
+  .l-blocks > li {
+    clear:none;
+  }
+
+  .l-blocks-four-up > li,
+  .l-blocks-five-up > li,
+  .l-blocks-six-up > li {
+    float:left;
+    width:50%;
+  }
+
+  .l-blocks-four-up > li:nth-child(2n+1),
+  .l-blocks-five-up > li:nth-child(2n+1),
+  .l-blocks-six-up > li:nth-child(2n+1) {
+    clear:left;
+  }
+
+  // nth-child polyfill (IE7, IE8, etc) ----------------------------------------------- 
+  .no-nthchild .l-blocks-start {
+    clear:left;
+  }
+
+  .no-nthchild .l-blocks-end {
+    zoom:1;
+    float:none;
+    width:auto
+  }
+
+}
+
+@media (min-width:480px) {
+  .l-blocks-two-up > li,
+  .l-blocks-three-up > li {
+    float:left;
+    width:50%;
+  }
+
+  .l-blocks-three-up > li,
+  .l-blocks-five-up > li,
+  .l-blocks-six-up > li {
+    width:33.333333%;
+  }
+
+  .l-blocks-five-up > li:nth-child(2n+1),
+  .l-blocks-six-up > li:nth-child(2n+1) {
+    clear:none;
+  }
+
+  .l-blocks-two-up > li:nth-child(2n+1),
+  .l-blocks-three-up > li:nth-child(3n+1),
+  .l-blocks-five-up > li:nth-child(3n+1),
+  .l-blocks-six-up > li:nth-child(3n+1) {
+    clear:left;
+  }
+
+  .l-blocks img {
+    width:auto;
+  }
+}
+
+
+@media (min-width:600px) {
+
+  .l-blocks-four-up > li {
+    width:25%;
+  }
+
+  .l-blocks-five-up > li {
+    width:20%;
+  }
+
+  .l-blocks-six-up > li {
+    width:16.666667%;
+  }
+
+  .l-blocks-four-up > li:nth-child(2n+1),
+  .l-blocks-five-up > li:nth-child(2n+1),
+  .l-blocks-five-up > li:nth-child(3n+1),
+  .l-blocks-six-up > li:nth-child(3n+1) {
+    clear:none;
+  }
+
+  .l-blocks-four-up > li:nth-child(4n+1),
+  .l-blocks-five-up > li:nth-child(5n+1),
+  .l-blocks-six-up > li:nth-child(6n+1) {
+    clear:left;
+  }
+
+}

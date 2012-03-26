@@ -1,0 +1,27 @@
+// Lists Resets
+// =========================
+//
+// Addresses margins set differently in IE6/7
+//
+// Addresses paddings set differently in IE6/7
+//
+// Corrects list images handled incorrectly in IE7
+
+dl, menu, ol, ul {
+  margin: 1em 0;
+}
+
+dd {
+  margin: 0 0 0 40px;
+}
+
+menu, ol, ul {
+  padding: 0 0 0 40px;
+}
+
+nav {
+  ul, ol {
+    list-style: none;
+    list-style-image: none; 
+  }
+}
